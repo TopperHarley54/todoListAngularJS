@@ -8,8 +8,9 @@
 			<input type="text" ng-model="Todo.todo.text" value="" />
 			<button ng-click="createTodo()">Ajouter todo</button>
 		</form>
-		<li ng-repeat="todo in todos">
-			<a ng-click="showDetails = ! showDetails" ng-href="#/lists/{{list._id.$oid}}/{{todo._id.$oid}}">{{todo.text}}</a>				
+		<li ng-repeat="todo in todos | filter:todo.priority">
+			<a ng-click="showDetails = ! showDetails" ng-href="#/lists/{{list._id.$oid}}/{{todo._id.$oid}}">{{todo.text}}</a>
+			{{todo.priority}}
 			<div class="todos-details" ng-show="showDetails">
 				<button ng-click="deleteTodo()">Supprimer todo</button>
 				<br/><br/>
