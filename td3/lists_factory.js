@@ -1,10 +1,10 @@
-angular.module("todos").factory("todolists", ['List', 'Todo',function(List, Todo){
+angular.module("todos").factory("todolists", ['List', 'Todo', function(List, Todo){
   var todolists = {
-    lists: []
+    lists: [],
   };
 
   todolists.lists = List.query();
-
+  
   todolists.addlist = function(list){
     this.lists.push(list);
   };
