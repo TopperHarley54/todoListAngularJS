@@ -9,13 +9,15 @@
 			<button ng-click="createTodo()">Ajouter todo</button>
 		</form>
 		<li ng-repeat="todo in todos | filter:todo.priority">
-			<a ng-click="showDetails = ! showDetails" ng-href="#/lists/{{list._id.$oid}}/{{todo._id.$oid}}">{{todo.text}}</a>
+			<input type="checkbox" ng-model="todo.done" ng-change="change(1,todo._id.$oid)" ng-if="todo.done == true" ng-checked="true">
+			<input type="checkbox" ng-model="todo.done" ng-change="change(0,todo._id.$oid)" ng-if="todo.done == false" ng-checked="false">
+			<a ng-click="showDetails = ! showDetails">{{todo.text}}</a>
 			{{todo.priority}}
 			<div class="todos-details" ng-show="showDetails">
-				<button ng-click="deleteTodo()">Supprimer todo</button>
+				<button ng-click="deleteTodo(todo._id.$oid)">Supprimer todo</button>
 				<br/><br/>
 				<input type="text" ng-model="todo.text" required ng-maxlength="30">
-     			<button ng-click="updateTodo(todo.text)">Modifier todo</button>				
+     			<button ng-click="updateTodo(todo.text, todo._id.$oid)">Modifier todo</button>				
 			</div>		
 		</li>
 		{{todolists}}

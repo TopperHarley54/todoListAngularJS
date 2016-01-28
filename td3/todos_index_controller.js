@@ -2,13 +2,13 @@ angular.module('todos').controller('TodosIndexController', ['$scope', '$routePar
 	$scope.list = List.get({id: $routeParams['id']})
 	$scope.todos = Todo.query({list_id: $routeParams['id']})	
 
-  $scope.updateTodo = function(val){
+  $scope.updateTodo = function(val,id_todo){
     angular.forEach($scope.todos, function(value, key) {
       if(value._id.$oid == $routeParams['id']){  
         todolists.lists[key].label = val;
       }
     });
-    Todo.update({list_id:$routeParams['id'], id:$routeParams['id_todo']}, {todo: {text: val}});
+    Todo.update({list_id:$routeParams['id'], id:id_todo}, {todo: {text: val}});
     console.log("OK");
   }
 
@@ -28,9 +28,9 @@ angular.module('todos').controller('TodosIndexController', ['$scope', '$routePar
     $scope.todos.push(t);
   }
 
-  $scope.deleteTodo = function(){
+  $scope.deleteTodo = function(id_todo){
     t = new Todo($scope.Todo);
-    t.$delete({list_id:$routeParams['id'], id:$routeParams['id_todo']});
+    t.$delete({list_id:$routeParams['id'], id:id_todo});
     console.log($scope.todos);
 
     angular.forEach($scope.todos, function(value, key) {
@@ -55,5 +55,20 @@ angular.module('todos').controller('TodosIndexController', ['$scope', '$routePar
         $location.path('/lists/'+todolists.lists[0]._id.$oid);
       }
   };
+
+  $scope.change = function(state, id_todo){
+    t = new Todo($scope.Todo);
+
+    console.log($routeParams['id']);
+    console.log(id_todo)
+    if(state == 0)
+    {
+      t.$done({list_id:$routeParams['id'], id:id_todo});  
+      $scope.todos.done = true;
+    }else{
+      t.$undone({list_id:$routeParams['id'], id:id_todo});         
+      $scope.todos.done = false;
+    }
+  }
 
 }]);
