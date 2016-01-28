@@ -12,7 +12,11 @@ angular.module('todos').controller('TodosIndexController', ['$scope', '$routePar
         	}
       	});
         List.update({id:$routeParams['id']},{list:$scope.list});
+  };
 
-	    //todolists.updatelist();
-  	};
+  $scope.createTodo = function(){
+      console.log($scope.Todo);
+      t = new Todo($scope.Todo);
+      t.$save({list_id:$routeParams['id']});
+  }
 }]);
