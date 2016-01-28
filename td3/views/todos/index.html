@@ -1,0 +1,13 @@
+<h1>{{list.label}}</h1>
+<div>
+	<ul>
+		<form ng-submit="" novalidate>
+			<input type="text" ng-model="list.label" value="{{list.label}}" />
+			<button ng-click="updateList(list.label)">Modifier</button>
+		</form>
+		<li ng-repeat="todo in todos">{{todo.text}}</li>
+		<!-- <button ng-click="deleteTodo()">Supprimer</button> -->
+		<div>ID list : {{list.id}}</div>
+		<!-- <a ng-href="{{toto.id}}/delete">Supprimer</button> -->
+	</ul>
+</div>

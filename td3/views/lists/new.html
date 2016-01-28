@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+<html ng-app="todos">
+<head lang="fr">
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <title>Todos</title>
+    <meta name="description" content="">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <script src="../../lib/angular.min.js"></script>
+    <script src="../../lib/angular-animate.min.js"></script>
+    <script src="../../lib/angular-resource.min.js"></script>
+    <script src="../../lib/angular-route.min.js"></script>
+    <script src="../../lib/angular-sanitize.min.js"></script>
+    <script src="../../app.js"></script>
+    <script src="../../lists_factory.js"></script>
+    <script src="../../lists_newController.js"></script>
+    <script src="../../todos_index_controller.js"></script>
+</head>
+<body ng-view="ngRoute">
+  <div ng-controller="NewListController">
+    {{toto}}
+    <form ng-submit="" novalidate>
+      <input type="text" ng-model="newList.label" required ng-maxlength="30">
+      <button ng-click="createList()">Enregistrer</button>
+      <!-- <input type="submit" value="Envoyer" /> -->
+    </form>
+    {{newList.label}}
+  </div>
+</body>
+</html>

@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html ng-app="todos">
+<head lang="fr">
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <title>Todos</title>
+    <meta name="description" content="">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <script src="lib/angular.min.js"></script>
+    <script src="lib/angular-animate.min.js"></script>
+    <script src="lib/angular-resource.min.js"></script>
+    <script src="lib/angular-route.min.js"></script>
+    <script src="lib/angular-sanitize.min.js"></script>
+
+    <script src="app.js"></script>
+
+    <script src="lists_factory.js"></script>
+    <script src="lists_new_controller.js"></script>
+    <script src="lists_resource.js"></script>
+    <script src="lists_index_controller.js"></script>
+
+    <script src="todos_index_controller.js"></script>
+    <script src="todo_resource.js"></script>
+</head>
+<body>
+  <div id="sidebar" ng-controller="ListsIndexController">
+		<ul>
+			<li ng-repeat="list in todolists">
+				<a ng-href="#/lists/{{list._id.$oid}}">{{list.label}}</a>
+			</li>
+		</ul>
+    <div ng-controller="NewListController">
+      <!-- <a ng-href="#/lists/{{listid}}/delete">Supprimer Liste</button> -->
+      <button ng-click="deleteList()">Supprimer Liste</button>
+    </div>
+	</div>
+  <a ng-href="#/new">Nouvelle tâche</a>
+		<div id="main-content" ng-view>
+
+    </div>
+</body>
+</html>
