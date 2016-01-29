@@ -2,22 +2,17 @@ angular.module("todos").controller("NewListController", ['$location', '$scope','
   $scope.newList = {label:''};
 
   $scope.createList= function(){
-    l = new List({list: $scope.updateList});
+    l = new List({list: $scope.newList});
     l.$save(function(r){
-      console.log($scope);
     });
-    console.log(todolists);
     todolists.addlist(l);
-  }; 
+  };
 
   $scope.deleteList= function(){
-      console.log(todolists.lists);
       var l = new List(todolists.lists);
-      console.log($routeParams);
       l.$delete({id:$routeParams['id']});
       angular.forEach(todolists.lists, function(value, key) {
-        if(value._id.$oid == $routeParams['id']){     
-          console.log(key);
+        if(value._id.$oid == $routeParams['id']){
           todolists.lists.splice(key,1);
         }
       });

@@ -9,8 +9,7 @@ app.config(['$routeProvider','$httpProvider', function($routeProvider,$httpProvi
 
   $routeProvider.when('/', {template: "<h1>TEST</h1>", controller: 'FirstController' })
   $routeProvider.when('/new', {templateUrl: "views/lists/new.html", controller: 'NewListController' })
-  $routeProvider.when('/lists/:id', {templateUrl: "views/todos/index.html", controller: 'TodosIndexController' })
-  console.log("OKconfig");
+  $routeProvider.when('/lists/:id/:id_todo?', {templateUrl: "views/todos/index.html", controller: 'TodosIndexController' })
 }]);
 
 app.controller('FirstController', ['$location', 'todolists', 'List', '$scope', '$http', function($location, todolists, List, $scope, $http){
