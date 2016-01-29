@@ -3,6 +3,7 @@ body{
 }
 
 #main{
+  padding-top: 1%;
   @extend .row;
   & .clearBackgroundSidebar{
     @extend .span-3;
