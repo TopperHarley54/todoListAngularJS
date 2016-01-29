@@ -2,13 +2,51 @@ body{
   background-image: url(../img/galaxy.jpeg);
 }
 
-#clearBackground{
-  background: rgba(255, 255, 255, 0.25);
-  padding: 10px;
-  margin: 5px;
-  border-radius: 5px;
-  border: solid 1px black;
+#main{
+  @extend .row;
+  & .clearBackgroundSidebar{
+    @extend .span-3;
+    @extend .span-md-4;
+    background: rgba(255, 255, 255, 0.25);
+    padding: 10px;
+    min-width: 125px;
+    max-width: 165px;
+    border-radius: 0px 5px 5px 0px;
+    border: solid 1px black;
+    display: inline-block;
+    height: 100%;
+    box-sizing: border-box;
+    & #sidebar{
+      height: 80vh;
+      box-sizing: border-box;
+    }
+  }
+
+  & .clearBackgroundMain{
+    @extend .span-16;
+    @extend .span-md-15;
+    @extend .span-sm-13;
+
+
+    background: rgba(255, 255, 255, 0.25);
+    padding: 10px;
+    margin: 0px 10px;
+    border-radius: 5px;
+    border: solid 1px black;
+    display: inline-block;
+
+    & #main-content{
+      height: 80vh;
+
+      & h1{
+        display: inline-block;
+        margin-bottom: 10px;
+      }
+    }
+  }
 }
+
+
 
 ul {
 
@@ -24,5 +62,9 @@ ul {
 }
 
 #sidebar{
-  display: block;
+  display: inline-block;
+}
+
+#main-content{
+  display: inline-block;
 }

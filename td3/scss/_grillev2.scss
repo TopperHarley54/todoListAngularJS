@@ -1,0 +1,130 @@
+@function get-margin-offset-first-child($i) {
+  @return ($i / $nb-colonnes)*100% - ($i / $nb-colonnes)*1% + 0.5%;
+}
+
+@mixin appCalculSpan($i) {
+    width: ($i / $nb-colonnes)*100% - ($i / $nb-colonnes)*1%;
+    display: inline-block;
+    padding-left: $grille-goutiere;
+    padding-right: $grille-goutiere;
+    vertical-align : top;
+    box-sizing: border-box;
+    float:left;
+}
+
+@mixin appCalculOffset($i) {
+    margin-left: ($i / $nb-colonnes)*100% - ($i / $nb-colonnes)*1%;
+    display: inline-block;
+    box-sizing: border-box;
+    float: left;
+
+}
+
+
+@mixin calculLargeurSpan() {
+    @for $i from 1 through $nb-colonnes {
+        .span-#{$i} {
+            @include appCalculSpan($i);
+        }
+    }
+}
+
+@mixin calculLargeurOffset() {
+    @for $i from 1 through ($nb-colonnes - 1) {
+        .offset-#{$i} {
+            @media screen and (min-width: $md-screen + 1) {
+                @include appCalculOffset($i);
+            }
+        }
+    }
+}
+
+@mixin calculLargeurSpan-md() {
+    @for $i from 1 through $nb-colonnes {
+        .span-md-#{$i} {
+            @media screen and (max-width: $md-screen) {
+                @include appCalculSpan($i);
+            }
+        }
+    }
+}
+
+@mixin calculLargeurOffset-md() {
+    @for $i from 1 through ($nb-colonnes - 1) {
+        .offset-md-#{$i} {
+            @media screen and (min-width: $sm-screen) and (max-width: $md-screen) {
+                @include appCalculOffset($i);
+            }
+        }
+    }
+}
+
+@mixin calculLargeurSpan-sm() {
+    @for $i from 1 through $nb-colonnes {
+        .span-sm-#{$i} {
+            @media screen and (max-width: $sm-screen) {
+                @include appCalculSpan($i);
+            }
+        }
+    }
+}
+
+@mixin calculLargeurOffset-sm() {
+    @for $i from 1 through ($nb-colonnes - 1) {
+        .offset-sm-#{$i} {
+            @media screen and (max-width: $sm-screen) {
+                @include appCalculOffset($i);
+            }
+        }
+    }
+}
+
+
+.container {
+    max-width: $container-width;
+    display: block;
+    margin: 15px auto;
+    border: solid 1px black;
+    box-shadow: 3px 3px 3px black;
+//    padding:2px 10px;
+}
+
+.row {
+    display: block;
+  //  width: 100%;
+    margin-top: 12px;
+    margin-bottom: 12px;
+//    box-sizing: border-box;
+    clear: left;
+    overflow: hidden;
+    &+div{
+      clear:left;
+    }
+
+    @for $i from 1 through $nb-colonnes{
+      @media screen and (min-width: $md-screen){
+        & [class*="offset-#{$i}"]:first-child{
+          clear:left;
+          margin-left:get-margin-offset-first-child($i);
+        }
+        & [class="span-#{$i}"]:first-child{
+          clear:left;
+          margin-left: 0.5%;
+        }
+      }
+    }
+}
+
+
+.grille-affiche{
+  & [class^="span-"]{
+    border: 1px solid $violet-fonce;
+  }
+}
+
+@include calculLargeurSpan();
+@include calculLargeurOffset();
+@include calculLargeurSpan-md();
+@include calculLargeurOffset-md();
+@include calculLargeurSpan-sm();
+@include calculLargeurOffset-sm();
