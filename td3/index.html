@@ -19,16 +19,16 @@
   <script src="lists_resource.js"></script>
   <script src="lists_index_controller.js"></script>
 
-  <script src="todos_index_controller.js"></script>
-  <script src="todo_resource.js"></script>
-  <link rel="stylesheet" href="css/style.css">
-</head>
-<body>
-  <div id="header">
-    <h1>Todolist</h1>
-  </div>
-  <div id="main">
-    <div class="clearBackgroundSidebar">
+      <script src="todos_index_controller.js"></script>
+      <script src="todo_resource.js"></script>
+      <script src="todo_directive.js"></script>
+      <link rel="stylesheet" href="css/style.css">
+  </head>
+  <body>
+    <div id="header">
+      <h1>Todolist</h1>
+    </div>
+    <div id="clearBackground">
       <div id="sidebar" ng-controller="ListsIndexController">
         <ul>
           <li ng-repeat="list in todolists">
