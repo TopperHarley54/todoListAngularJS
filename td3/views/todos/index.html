@@ -9,19 +9,9 @@
 			<button ng-click="createTodo()">Ajouter todo</button>
 		</form>
 		<input type="checkbox" ng-model="hide" ng-change="showTacheTermine = ! showTacheTermine">
-		<label ng-show="showTacheTermine">Afficher les todos traité</label>
-		<label ng-show="!showTacheTermine">Cacher les todos traité</label>
+		<label>Afficher les todos traité</label>
 		<li ng-repeat="todo in todos | filter:todo.priority" ng-show="showTacheTermine || todo.done == false ">
-			<input type="checkbox" ng-model="todo.done" ng-change="change(1,todo._id.$oid)" ng-if="todo.done == true" ng-checked="true">
-			<input type="checkbox" ng-model="todo.done" ng-change="change(0,todo._id.$oid)" ng-if="todo.done == false" ng-checked="false">
-			<a ng-click="showDetailsTodo = ! showDetailsTodo">{{todo.text}}</a>
-			{{todo.done}}
-			<div class="todos-details" ng-show="showDetailsTodo">
-				<button ng-click="deleteTodo(todo._id.$oid)">Supprimer todo</button>
-				<br/><br/>
-				<input type="text" ng-model="todo.text" required ng-maxlength="30">
-     			<button ng-click="updateTodo(todo.text, todo._id.$oid)">Modifier todo</button>				
-			</div>	
+			<ng-comment> </ng-comment>
 		</li>
 		{{todolists}}
 	</ul>

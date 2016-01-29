@@ -22,7 +22,6 @@ angular.module('todos').controller('TodosIndexController', ['$scope', '$routePar
   };
 
   $scope.createTodo = function(){
-    console.log($scope.Todo);
     t = new Todo($scope.Todo);
     t.$save({list_id:$routeParams['id']});
     $scope.todos.push(t);
@@ -31,10 +30,9 @@ angular.module('todos').controller('TodosIndexController', ['$scope', '$routePar
   $scope.deleteTodo = function(id_todo){
     t = new Todo($scope.Todo);
     t.$delete({list_id:$routeParams['id'], id:id_todo});
-    console.log($scope.todos);
-
     angular.forEach($scope.todos, function(value, key) {
-      if(value._id.$oid == $routeParams['id_todo']){
+      console.log("test");
+      if(value._id.$oid == id_todo){
         $scope.todos.splice(key,1);
       }
     });
@@ -58,9 +56,6 @@ angular.module('todos').controller('TodosIndexController', ['$scope', '$routePar
 
   $scope.change = function(state, id_todo){
     t = new Todo($scope.Todo);
-
-    console.log($routeParams['id']);
-    console.log(id_todo)
     if(state == 0)
     {
       t.$done({list_id:$routeParams['id'], id:id_todo});  
