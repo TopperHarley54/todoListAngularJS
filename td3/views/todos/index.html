@@ -10,7 +10,7 @@
 		</form>
 		<input type="checkbox" ng-model="hide" ng-change="showTacheTermine = ! showTacheTermine">
 		<label>Afficher les todos traité</label>
-		<li ng-repeat="todo in todos | filter:todo.priority" ng-show="showTacheTermine || todo.done == false ">
+		<li ng-repeat="todo in todos | filter:todo.priority" ng-show="showTacheTermine || todo.done == false">
 			<ng-comment> </ng-comment>
 		</li>
 		{{todolists}}
