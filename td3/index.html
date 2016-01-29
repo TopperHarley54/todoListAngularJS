@@ -30,20 +30,27 @@
   </div>
   <div id="main">
     <div class="clearBackgroundSidebar">
+      <div id="titreSidebar">
+        Listes
+      </div>
       <div id="sidebar" ng-controller="ListsIndexController">
         <ul>
           <li ng-repeat="list in todolists">
             <a ng-href="#/lists/{{list._id.$oid}}">{{list.label}}</a>
           </li>
         </ul>
-        <div ng-controller="NewListController">
-          <button ng-click="deleteList()">Supprimer Liste</button>
-          <a class="boutonA" ng-href="#/new">Nouvelle tâche</a>
+        <div id="interactionLists">
+          <div ng-controller="NewListController">
+            <button ng-click="deleteList()">Supprimer Liste</button>
+            <a class="boutonA" ng-href="#/new">Nouvelle tâche</a>
+          </div>
         </div>
       </div>
-
     </div>
     <div class="clearBackgroundMain">
+      <div id="titreMain">
+        Todos
+      </div>
       <div id="main-content" ng-view>
       </div>
     </div>
