@@ -114,8 +114,17 @@ body{
         text-shadow: 1px 1px #574171;
       }
 
-      .formAjoutListe{
+      & h2{
+        margin-top: 10px;
+        margin-bottom: 10px;
+        text-shadow: 1px 1px #574171;
+      }
 
+      .formAjoutListe{
+        @extend .row;
+        @extend .span-15;
+        @extend .span-md-15;
+        @extend .span-sm-15;
       }
 
       & .ulTodo{
@@ -126,21 +135,6 @@ body{
           @extend .span-15;
           @extend .span-md-15;
           @extend .span-sm-15;
-
-          & .buttonTodo{
-            margin-top: 8px;
-            color:white;
-            background: rgba(160, 0, 0, 0.7);
-            border: none;
-            width:90px;
-            border-radius: 5px;
-            height:30px;
-          }
-
-          & .inputText{
-            height:24px;
-            border-radius: 5px;
-          }
         }
 
         & .inputCheckbox{
@@ -178,7 +172,20 @@ ul {
   }
 }
 
+.buttonTodo{
+  margin-top: 8px;
+  color:white;
+  background: rgba(160, 0, 0, 0.7);
+  border: none;
+  width:90px;
+  border-radius: 5px;
+  height:30px;
+}
 
+.inputText{
+  height:24px;
+  border-radius: 5px;
+}
 
 
 #sidebar{

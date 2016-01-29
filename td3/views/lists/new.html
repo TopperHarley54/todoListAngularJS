@@ -18,9 +18,10 @@
 </head>
 <body ng-view="ngRoute">
   <div ng-controller="NewListController">
+    <h2>Nouvelle Liste :</h2>
     <form ng-submit="" novalidate class="formAjoutListe">
-      <input type="text" ng-model="newList.label" required ng-maxlength="30">
-      <button ng-click="createList()">Enregistrer</button>
+      <input class="inputText" type="text" ng-model="newList.label" required ng-maxlength="30">
+      <button class="buttonTodo" ng-click="createList()">Enregistrer</button>
       <!-- <input type="submit" value="Envoyer" /> -->
     </form>
   </div>
